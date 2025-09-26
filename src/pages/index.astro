@@ -3,71 +3,65 @@ import BlurText from "@/components/BlurText";
 import FadeContent from "@/components/FadeContent";
 import MagicBento from "@/components/MagicBento";
 import PrismaticBurst from "@/components/PrismaticBurst";
+import Layout from "@/layout/Layout.astro";
 import "@/styles/global.css";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body class="w-full flex justify-center items-center bg-neutral-950">
-    <main class="w-full flex justify-center min-h-svh items-center relative">
-      <BlurText
-        text="KATOU MEGUMI"
-        delay={150}
-        animateBy="words"
-        direction="top"
-        className="text-white/70 text-9xl hidden xl:block font-extrabold absolute top-4 left-4 z-50"
-        client:only="react"
-      />
-      <div class="min-h-full h-svh absolute top-0 left-0 w-full -z-50">
-        <PrismaticBurst
-          client:only="react"
-          animationType="rotate3d"
-          intensity={2}
-          speed={0.5}
-          distort={1.0}
-          paused={false}
-          offset={{ x: 0, y: 0 }}
-          hoverDampness={0.25}
-          rayCount={24}
-          mixBlendMode="lighten"
-          colors={["#ff007a", "#4d3dff", "#ffffff"]}
-        />
-      </div>
-      <FadeContent
-        blur={true}
-        duration={1000}
-        easing="ease-out"
-        initialOpacity={0}
-        client:only="react"
-        className="relative z-50"
-      >
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          client:only="react"
-        />
-      </FadeContent>
-      <BlurText
-        text="MY ISTRI"
-        delay={150}
-        animateBy="words"
-        direction="bottom"
-        className="text-white/70 text-9xl hidden xl:block font-extrabold absolute bottom-4 right-4 z-50"
-        client:only="react"
-      />
-    </main>
-  </body>
-</html>
+<Layout
+  title="Megumi Kato"
+  description="Itulah istri saya"
+  url="https://megumi.ekel.dev"
+>
+  <BlurText
+    text="MEGUMI KATO"
+    delay={150}
+    animateBy="words"
+    direction="top"
+    className="text-white text-8xl hidden xl:block font-extrabold absolute top-4 left-4 z-50"
+    client:only="react"
+  />
+  <div class="min-h-full h-svh absolute top-0 left-0 w-full -z-50">
+    <PrismaticBurst
+      client:only="react"
+      animationType="rotate3d"
+      intensity={2}
+      speed={0.5}
+      distort={1.0}
+      paused={false}
+      offset={{ x: 0, y: 0 }}
+      hoverDampness={0.25}
+      rayCount={24}
+      mixBlendMode="lighten"
+      colors={["#ff007a", "#4d3dff", "#ffffff"]}
+    />
+  </div>
+  <FadeContent
+    blur={true}
+    duration={1000}
+    easing="ease-out"
+    initialOpacity={0}
+    client:only="react"
+    className="relative z-50"
+  >
+    <MagicBento
+      textAutoHide={true}
+      enableStars={true}
+      enableSpotlight={true}
+      enableBorderGlow={true}
+      enableTilt={true}
+      enableMagnetism={true}
+      clickEffect={true}
+      spotlightRadius={300}
+      particleCount={12}
+      client:only="react"
+    />
+  </FadeContent>
+  <BlurText
+    text="加藤恵"
+    delay={150}
+    animateBy="words"
+    direction="bottom"
+    className="text-white text-8xl hidden xl:block font-extrabold absolute bottom-4 right-4 z-50"
+    client:only="react"
+  />
+</Layout>

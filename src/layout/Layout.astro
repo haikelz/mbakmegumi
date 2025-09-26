@@ -1,0 +1,46 @@
+---
+import ClickSpark from "@/components/ClickSpark";
+import "@/styles/global.css";
+
+type Props = {
+  title: string;
+  description: string;
+  url: string;
+};
+
+const { title, description, url } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="w-full flex justify-center items-center bg-neutral-950">
+    <ClickSpark
+      sparkColor="#fff"
+      sparkSize={10}
+      sparkRadius={15}
+      sparkCount={8}
+      duration={400}
+      client:only="react"
+      ><main class="w-full flex justify-center min-h-svh items-center relative">
+        <slot />
+      </main>
+    </ClickSpark>
+  </body>
+</html>
