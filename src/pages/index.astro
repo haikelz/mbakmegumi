@@ -2,7 +2,6 @@
 import BlurText from "@/components/BlurText";
 import FadeContent from "@/components/FadeContent";
 import MagicBento from "@/components/MagicBento";
-import PrismaticBurst from "@/components/PrismaticBurst";
 import Layout from "@/layout/Layout.astro";
 import "@/styles/global.css";
 ---
@@ -20,21 +19,6 @@ import "@/styles/global.css";
     className="text-white text-8xl hidden xl:block font-extrabold absolute top-4 left-4 z-50"
     client:only="react"
   />
-  <div class="min-h-full h-svh absolute top-0 left-0 w-full -z-50">
-    <PrismaticBurst
-      client:only="react"
-      animationType="rotate3d"
-      intensity={2}
-      speed={0.5}
-      distort={1.0}
-      paused={false}
-      offset={{ x: 0, y: 0 }}
-      hoverDampness={0.25}
-      rayCount={24}
-      mixBlendMode="lighten"
-      colors={["#ff007a", "#4d3dff", "#ffffff"]}
-    />
-  </div>
   <FadeContent
     blur={true}
     duration={1000}
