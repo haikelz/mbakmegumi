@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mbakmegumi
+  labels:
+    app: mbakmegumi
+spec:
+  type: ClusterIP
+  selector:
+    app: mbakmegumi
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

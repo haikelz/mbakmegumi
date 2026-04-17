@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mbakmegumi
+  labels:
+    app: mbakmegumi
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - megumi.ekel.dev
+      secretName: mbakmegumi-tls
+  rules:
+    - host: megumi.ekel.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mbakmegumi
+                port:
+                  number: 80
