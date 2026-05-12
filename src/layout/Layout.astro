@@ -1,0 +1,63 @@
+---
+import ClickSpark from "@/components/click-spark";
+import Squares from "@/components/squares";
+import "@/styles/global.css";
+import "@fontsource/epilogue";
+import "newrelic";
+
+type Props = {
+  title: string;
+  description: string;
+  url: string;
+};
+
+const { title, description, url } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="w-full flex justify-center items-center nb-body">
+    <ClickSpark
+      sparkColor="#111111"
+      sparkSize={10}
+      sparkRadius={15}
+      sparkCount={8}
+      duration={400}
+      client:only="react"
+      ><main
+        class="w-full flex justify-center min-h-svh items-center relative p-4 md:p-8"
+      >
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <Squares
+            direction="right"
+            speed={0.6}
+            borderColor="rgba(17, 17, 17, 0.28)"
+            squareSize={40}
+            hoverFillColor="rgba(255, 230, 88, 0.45)"
+            client:only="react"
+          />
+        </div>
+        <div class="relative z-10 w-full flex justify-center">
+          <slot />
+        </div>
+      </main>
+    </ClickSpark>
+  </body>
+</html>
