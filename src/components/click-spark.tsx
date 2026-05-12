@@ -148,14 +148,17 @@ export default function ClickSpark({
     const y = e.clientY - rect.top;
 
     const now = performance.now();
-    const newSparks: Spark[] = Array.from({ length: sparkCount }, function (_, i) {
-      return {
-        x,
-        y,
-        angle: (2 * Math.PI * i) / sparkCount,
-        startTime: now,
-      };
-    });
+    const newSparks: Spark[] = Array.from(
+      { length: sparkCount },
+      function (_, i) {
+        return {
+          x,
+          y,
+          angle: (2 * Math.PI * i) / sparkCount,
+          startTime: now,
+        };
+      },
+    );
 
     sparksRef.current.push(...newSparks);
   }

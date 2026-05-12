@@ -37,7 +37,7 @@ function FadeContent({
           }, delay);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(element);

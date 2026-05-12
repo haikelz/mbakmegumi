@@ -78,7 +78,7 @@ export default function Squares({
         0,
         canvas.width / 2,
         canvas.height / 2,
-        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
+        Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2,
       );
       gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
       gradient.addColorStop(1, "rgba(255, 245, 205, 0.35)");
@@ -129,10 +129,10 @@ export default function Squares({
       const startY = Math.floor(gridOffset.current.y / squareSize) * squareSize;
 
       const hoveredSquareX = Math.floor(
-        (mouseX + gridOffset.current.x - startX) / squareSize
+        (mouseX + gridOffset.current.x - startX) / squareSize,
       );
       const hoveredSquareY = Math.floor(
-        (mouseY + gridOffset.current.y - startY) / squareSize
+        (mouseY + gridOffset.current.y - startY) / squareSize,
       );
 
       if (
