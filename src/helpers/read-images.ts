@@ -7,7 +7,7 @@
  */
 export function readImages(filesDir: string, pattern: RegExp) {
   const imageFiles = import.meta.glob(
-    "/public/assets/**/*.(png|jpg|jpeg|gif|webp|avif)"
+    "/public/assets/**/*.(png|jpg|jpeg|gif|webp|avif)",
   );
 
   const images = Object.entries(imageFiles)
@@ -25,7 +25,7 @@ export function readImages(filesDir: string, pattern: RegExp) {
     .sort(
       (a, b) =>
         Number(a.fileName.replace(pattern, "")) -
-        Number(b.fileName.replace(pattern, ""))
+        Number(b.fileName.replace(pattern, "")),
     );
 
   return images;

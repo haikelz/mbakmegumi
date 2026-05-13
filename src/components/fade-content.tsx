@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
-interface FadeContentProps {
+type FadeContentProps = {
   children: ReactNode;
   blur?: boolean;
   duration?: number;
@@ -9,7 +9,7 @@ interface FadeContentProps {
   threshold?: number;
   initialOpacity?: number;
   className?: string;
-}
+};
 
 function FadeContent({
   children,
