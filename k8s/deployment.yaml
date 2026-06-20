@@ -1,9 +1,14 @@
 apiVersion: apps/v1
-kind: Deployment 
+kind: Deployment
 metadata:
   name: mbakmegumi
   labels:
     app: mbakmegumi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mbakmegumi
   template:
     metadata:
       labels:
@@ -12,7 +17,7 @@ metadata:
       containers:
         - name: mbakmegumi
           image: haikelilham/mbakmegumi:latest
-          imagePullPolicy: true
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
               name: http
@@ -27,11 +32,11 @@ metadata:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 5 
+            initialDelaySeconds: 5
             periodSeconds: 15
           readinessProbe:
             httpGet:
-              path: / 
+              path: /
               port: 80
             initialDelaySeconds: 3
             periodSeconds: 10
