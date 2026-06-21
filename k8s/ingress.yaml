@@ -9,10 +9,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - mbakmegumi.ekel.dev
+        - ${DOMAIN}
       secretName: mbakmegumi-tls
   rules:
-    - host: mbakmegumi.ekel.dev
+    - host: ${DOMAIN}
       http:
         paths:
           - path: /
