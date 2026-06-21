@@ -3,9 +3,14 @@ kind: Ingress
 metadata:
   name: mbakmegumi
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - mbakmegumi.ekel.dev
+      secretName: mbakmegumi-tls
   rules:
     - host: mbakmegumi.ekel.dev
       http:
