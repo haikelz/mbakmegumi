@@ -1,11 +1,34 @@
-  #!/usr/bin/env bash
+#!/usr/bin/env bash
 
-  set -euo pipefail
+set -euo pipefail
+
+if [[ -f .env ]]; then
   set -a
   source .env
   set +a
+fi
 
-  envsubst < k8s/clusterissuer.yaml | kubectl apply -f -
-  envsubst < k8s/deployment.yaml | kubectl apply -f -
-  envsubst < k8s/ingress.yaml | kubectl apply -f -
-  kubectl apply -f k8s/service.yaml
+required_vars=(DOMAIN EMAIL IMAGE)
+for var in "${required_vars[@]}"; do
+  if [[ -z "${!var:-}" ]]; then
+    echo "Missing required env var: ${var}. Set it in the shell or .env." >&2
+    exit 1
+  fi
+done
+
+render_apply() {
+  envsubst < "$1" | kubectl apply -f -
+}
+
+if envsubst < secret.yaml | grep -q '\${'; then
+  echo "Rendered secret.yaml still contains unsubstituted variables. Check your env values." >&2
+  exit 1
+fi
+
+cd k8s
+
+render_apply secret.yaml
+kubectl apply -f services.yaml
+kubectl apply -f deployment.yaml
+render_apply clusterissuer.yaml
+render_apply ingress.yaml
