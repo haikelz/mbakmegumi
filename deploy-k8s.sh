@@ -20,7 +20,7 @@ render_apply() {
   envsubst < "$1" | kubectl apply -f -
 }
 
-if envsubst < secret.yaml | grep -q '\${'; then
+if envsubst < k8s/secret.yaml | grep -q '\${'; then
   echo "Rendered secret.yaml still contains unsubstituted variables. Check your env values." >&2
   exit 1
 fi
