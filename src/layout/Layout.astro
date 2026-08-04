@@ -1,8 +1,7 @@
 ---
-import ClickSpark from "@/components/click-spark";
-import Squares from "@/components/squares";
 import "@/styles/global.css";
-import "@fontsource/epilogue";
+import "@fontsource/geist-mono";
+import "@fontsource/geist-sans";
 
 type Props = {
   title: string;
@@ -23,6 +22,8 @@ const { title, description, url } = Astro.props;
     <meta property="og:url" content={url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${url}/assets/katou-2.jpg`} />
+    <meta name="theme-color" content="#f5f5f5" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={url} />
     <meta property="twitter:title" content={title} />
@@ -31,32 +32,21 @@ const { title, description, url } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="icon" href="/favicon.ico" />
+    <script is:inline>
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const applyTheme = () => {
+        const stored = localStorage.getItem("theme");
+        const theme = stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+        const isDark = theme === "dark" || (theme === "system" && mediaQuery.matches);
+        document.documentElement.classList.toggle("dark", isDark);
+      };
+      applyTheme();
+      mediaQuery.addEventListener("change", applyTheme);
+    </script>
   </head>
-  <body class="w-full flex justify-center items-center nb-body">
-    <ClickSpark
-      sparkColor="#111111"
-      sparkSize={10}
-      sparkRadius={15}
-      sparkCount={8}
-      duration={400}
-      client:only="react"
-      ><main
-        class="w-full flex justify-center min-h-svh items-center relative p-4 md:p-8"
-      >
-        <div class="absolute inset-0 z-0 pointer-events-none">
-          <Squares
-            direction="right"
-            speed={0.6}
-            borderColor="rgba(17, 17, 17, 0.28)"
-            squareSize={40}
-            hoverFillColor="rgba(255, 230, 88, 0.45)"
-            client:only="react"
-          />
-        </div>
-        <div class="relative z-10 w-full flex justify-center">
-          <slot />
-        </div>
-      </main>
-    </ClickSpark>
+  <body>
+    <div class="page-bg-grid" aria-hidden="true"></div>
+    <a class="skip-link" href="#main-content">Skip to the story</a>
+    <slot />
   </body>
 </html>

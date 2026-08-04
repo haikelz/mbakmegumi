@@ -1,77 +1,675 @@
 ---
-import FadeContent from "@/components/fade-content";
-import MagicBento from "@/components/magic-bento";
 import Layout from "@/layout/Layout.astro";
-import "@/styles/global.css";
+
+const gallery = [
+  {
+    src: "/assets/katou-3.jpg",
+    alt: "Megumi Kato sitting in front of a laptop",
+    caption: "Quietly present in the process",
+  },
+  {
+    src: "/assets/katou-5.jpg",
+    alt: "Megumi Kato reading a book",
+    caption: "Humor when you least expect it",
+  },
+  {
+    src: "/assets/katou-6.jpg",
+    alt: "Megumi Kato wearing an apron",
+    caption: "Warmth in ordinary moments",
+  },
+  {
+    src: "/assets/katou-7.jpg",
+    alt: "Megumi Kato standing on a city street",
+    caption: "An ordinary encounter that changes everything",
+  },
+];
 ---
 
 <Layout
-  title="Megumi Kato"
-  description="Haikel's Wife"
+  title="Megumi Kato | The Quiet Heroine"
+  description="An interactive story about Megumi Kato, an understated heroine who slowly becomes unforgettable."
   url="https://mbakmegumi.ekel.dev"
 >
-  <section class="z-30 w-full max-w-7xl p-[clamp(0.5rem,1.5vw,1rem)]">
-    <div
-      class="grid grid-cols-1 gap-[clamp(0.75rem,1.8vw,1.2rem)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,0.92fr)] lg:items-stretch"
+  <div class="story-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="wordmark" href="#opening" aria-label="Return to the beginning">
+      <span>MEGUMI</span><span class="wordmark-mark">物語</span>
+    </a>
+    <nav aria-label="Story navigation">
+      <a href="#encounter">Encounter</a>
+      <a href="#character">Character</a>
+      <a href="#moments">Moments</a>
+    </nav>
+    <button
+      class="theme-toggle"
+      type="button"
+      aria-label="Theme: system. Select light theme"
     >
-      <div
-        class="border-4 border-[#111] bg-[#ffe658] p-[clamp(0.95rem,1.8vw,1.35rem)] text-[#111] shadow-[8px_8px_0_#111] transition-transform duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] lg:col-span-2 lg:row-1 lg:min-h-[300px]"
-      >
-        <span
-          class="inline-block border-[3px] border-[#111] bg-white px-[0.65rem] py-[0.2rem] text-xs font-bold uppercase tracking-[0.12em]"
-          >MY BELOVED</span
+      Theme: <span class="theme-label">System</span>
+    </button>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero story-section" id="opening" data-section="opening">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">
+          <span aria-hidden="true">EP. 00</span> The quiet heroine
+        </p>
+        <h1>Never flashy.<br /><em>Never forgotten.</em></h1>
+        <p class="hero-intro">
+          She never demands the spotlight. Megumi arrives quietly, then slowly
+          draws you closer.
+        </p>
+        <a class="primary-link" href="#encounter"
+          >Meet Megumi <span aria-hidden="true">↘</span></a
         >
-        <h1
-          class="mt-[0.7rem] text-[clamp(2rem,6.6vw,5.7rem)] font-black uppercase leading-[0.92] tracking-[0.02em] text-balance"
+        <p class="hero-note" aria-hidden="true">slow-burn heroine route ✦</p>
+      </div>
+
+      <div class="hero-visual reveal" style="--delay: 140ms">
+        <span class="visual-sticker" aria-hidden="true"
+          >Haikel's<br />wife ♡</span
         >
-          MEGUMI KATO
-        </h1>
-        <p
-          class="mt-3 max-w-[60ch] text-[clamp(0.95rem,1.65vw,1.1rem)] font-bold leading-[1.45]"
+        <button
+          class="hero-image-wrap media-button"
+          type="button"
+          data-lightbox
+          data-image="/assets/katou-2.jpg"
+          data-alt="Megumi Kato wearing a pink hoodie"
+          aria-label="Enlarge the hero image of Megumi Kato"
         >
-          It’s not like I want something like a confession. I’m fine with a
-          chance to fall in love, just a little. I just want simple, casual
-          words. Words that can make one say, “ah, so I could fall in love just
-          like that…
+          <img
+            src="/assets/katou-2.jpg"
+            alt="Megumi Kato wearing a pink hoodie"
+            width="675"
+            height="675"
+            fetchpriority="high"
+          />
+        </button>
+        <p class="hero-caption">
+          <strong>Megumi Kato</strong><br />Saenai Heroine no Sodatekata
         </p>
       </div>
-      <div
-        class="border-4 border-[#111] bg-[#58e8ff] p-[clamp(0.95rem,1.8vw,1.35rem)] text-[#111] shadow-[8px_8px_0_#111] transition-transform duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] lg:col-3 lg:row-1"
-      >
-        <div class="text-[0.78rem] font-black uppercase tracking-[0.12em]">
-          HUSBAND
-        </div>
-        <div
-          class="mt-[0.7rem] text-[clamp(1.5rem,4.6vw,3rem)] font-black uppercase leading-[0.95]"
+    </section>
+
+    <section
+      class="encounter story-section"
+      id="encounter"
+      data-section="encounter"
+    >
+      <div class="chapter-rail" aria-hidden="true">
+        <span>ENCOUNTER</span>
+      </div>
+      <div class="encounter-image reveal">
+        <button
+          class="media-button"
+          type="button"
+          data-lightbox
+          data-image="/assets/katou-7.jpg"
+          data-alt="Megumi Kato during an encounter on a city street"
+          aria-label="Enlarge Megumi Kato's encounter scene"
         >
-          HAIKEL
+          <img
+            src="/assets/katou-7.jpg"
+            alt="Megumi Kato during an encounter on a city street"
+            width="736"
+            height="414"
+            loading="lazy"
+          />
+        </button>
+      </div>
+      <div class="encounter-copy reveal" style="--delay: 100ms">
+        <p class="scene-label">
+          <span aria-hidden="true">01 /</span> A simple encounter
+        </p>
+        <h2>No dramatic entrance.</h2>
+        <p>
+          Without striking hair or an explosive personality, Megumi appears like
+          someone you might easily overlook.
+        </p>
+        <p class="accent-copy">That is exactly why she feels real.</p>
+      </div>
+    </section>
+
+    <section
+      class="character story-section"
+      id="character"
+      data-section="character"
+    >
+      <div class="character-heading reveal">
+        <p class="scene-label">
+          <span aria-hidden="true">02 /</span> What makes Megumi different?
+        </p>
+        <h2>She never tries to look <em>special.</em></h2>
+        <p class="character-instruction">
+          Choose a trait to reveal a different scene.
+        </p>
+      </div>
+
+      <div class="character-grid">
+        <figure class="portrait-card reveal">
+          <button
+            class="portrait-frame media-button"
+            type="button"
+            data-lightbox
+            data-image="/assets/katou-1.jpg"
+            data-alt="Megumi Kato in her school uniform"
+            aria-label="Enlarge Megumi Kato's character scene"
+          >
+            <img
+              class="character-portrait"
+              src="/assets/katou-1.jpg"
+              alt="Megumi Kato in her school uniform"
+              width="720"
+              height="719"
+              loading="lazy"
+            />
+          </button>
+          <figcaption class="character-caption" aria-live="polite">
+            A quiet expression, a steady presence.
+          </figcaption>
+        </figure>
+
+        <div class="traits reveal" style="--delay: 100ms">
+          <button
+            class="trait is-active"
+            type="button"
+            aria-pressed="true"
+            data-image="/assets/katou-1.jpg"
+            data-alt="Megumi Kato in her school uniform"
+            data-caption="A quiet expression, a steady presence."
+          >
+            <span class="trait-label">Presence</span>
+            <span class="trait-name">Quiet</span>
+            <span class="trait-copy"
+              >She never demands attention. Closeness grows naturally around
+              her.</span
+            >
+          </button>
+          <button
+            class="trait"
+            type="button"
+            aria-pressed="false"
+            data-image="/assets/katou-3.jpg"
+            data-alt="Megumi Kato sitting quietly in front of a laptop"
+            data-caption="Grounded, even in the middle of a complicated process."
+          >
+            <span class="trait-label">Nature</span>
+            <span class="trait-name">Grounded</span>
+            <span class="trait-copy"
+              >Honest, perceptive, and often the most reasonable voice in the
+              story.</span
+            >
+          </button>
+          <button
+            class="trait"
+            type="button"
+            aria-pressed="false"
+            data-image="/assets/katou-5.jpg"
+            data-alt="Megumi Kato reading a book with a playful expression"
+            data-caption="Her charm appears slowly, often when you least expect it."
+          >
+            <span class="trait-label">Charm</span>
+            <span class="trait-name">Gradual</span>
+            <span class="trait-copy"
+              >Her charm never arrives all at once. You notice it only after she
+              already feels close.</span
+            >
+          </button>
         </div>
+      </div>
+    </section>
+
+    <section
+      class="interlude story-section"
+      aria-label="A quote from Megumi Kato"
+    >
+      <button
+        class="interlude-media media-button reveal"
+        type="button"
+        data-lightbox
+        data-image="/assets/katou-megumi.gif"
+        data-alt="An animated clip of Megumi Kato"
+        aria-label="Enlarge the animated clip of Megumi Kato"
+      >
+        <img
+          src="/assets/katou-megumi.gif"
+          alt="An animated clip of Megumi Kato"
+          width="500"
+          height="281"
+          loading="lazy"
+        />
+      </button>
+      <blockquote class="reveal" style="--delay: 100ms">
+        <p>
+          “I only want the chance to fall in love, even if it is just a little.”
+        </p>
+        <footer>Megumi Kato</footer>
+      </blockquote>
+    </section>
+
+    <section class="moments story-section" id="moments" data-section="moments">
+      <div class="moments-heading reveal">
+        <p class="scene-label">
+          <span aria-hidden="true">03 /</span> Collected memories
+        </p>
+        <h2>Small moments.<br />Lasting impressions.</h2>
+        <p>
+          Choose a frame and discover the sides of Megumi that make her feel
+          close.
+        </p>
+      </div>
+
+      <div class="gallery" aria-label="A gallery of Megumi Kato moments">
+        {
+          gallery.map((item, index) => (
+            <button
+              class="gallery-item reveal"
+              style={`--delay: ${index * 60}ms`}
+              type="button"
+              data-lightbox
+              data-image={item.src}
+              data-alt={item.alt}
+              aria-label={`Enlarge: ${item.caption}`}
+            >
+              <span class="gallery-image">
+                <img src={item.src} alt={item.alt} loading="lazy" />
+              </span>
+              <span class="gallery-caption">{item.caption}</span>
+            </button>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="finale story-section" data-section="finale">
+      <button
+        class="finale-art media-button reveal"
+        type="button"
+        data-lightbox
+        data-image="/assets/saenai_heroine_no_sodatekata_114.jpg"
+        data-alt="A vertical sketch illustration of Megumi Kato"
+        aria-label="Enlarge the sketch illustration of Megumi Kato"
+      >
+        <img
+          src="/assets/saenai_heroine_no_sodatekata_114.jpg"
+          alt="A vertical sketch illustration of Megumi Kato"
+          width="1398"
+          height="2592"
+          loading="lazy"
+        />
+      </button>
+      <div class="finale-copy reveal" style="--delay: 120ms">
+        <p class="scene-label">
+          <span aria-hidden="true">04 /</span> An impression that lasts
+        </p>
+        <h2>Her simplicity leaves the deepest mark.</h2>
+        <p>
+          Megumi never arrives to steal the spotlight. Her impression grows
+          slowly, then stays with you far longer.
+        </p>
+        <a href="#opening" class="text-link"
+          >Read from the beginning <span aria-hidden="true">↑</span></a
+        >
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>My Beloved Wife</p>
+    <p>Katou Megumi</p>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Image preview">
+    <div class="lightbox-panel">
+      <div class="lightbox-media">
+        <img src="" alt="" />
+      </div>
+      <div class="lightbox-actions">
+        <span class="lightbox-hint">Image preview</span>
+        <button
+          class="lightbox-close"
+          type="button"
+          aria-label="Close image preview">Close</button
+        >
       </div>
     </div>
-    <FadeContent
-      blur={false}
-      duration={500}
-      easing="ease-out"
-      initialOpacity={0}
-      client:only="react"
-      className="relative z-50 mt-5 md:mt-7"
-    >
-      <div
-        class="border-4 border-[#111] bg-[#111] p-[clamp(0.6rem,1vw,0.9rem)] text-white shadow-[8px_8px_0_#111] transition-transform duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px]"
-      >
-        <MagicBento
-          textAutoHide={true}
-          enableStars={false}
-          enableSpotlight={false}
-          enableBorderGlow={false}
-          enableTilt={false}
-          enableMagnetism={false}
-          clickEffect={false}
-          spotlightRadius={180}
-          particleCount={0}
-          client:only="react"
-        />
-      </div>
-    </FadeContent>
-  </section>
+  </dialog>
+
+  <script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const root = document.documentElement;
+    const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    const themeLabel = document.querySelector<HTMLElement>(".theme-label");
+    const themes = ["system", "light", "dark"] as const;
+    type Theme = (typeof themes)[number];
+
+    function applyTheme(theme: Theme) {
+      const systemDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      root.classList.toggle(
+        "dark",
+        theme === "dark" || (theme === "system" && systemDark),
+      );
+      localStorage.setItem("theme", theme);
+      if (themeLabel)
+        themeLabel.textContent =
+          theme === "system" ? "System" : theme === "light" ? "Light" : "Dark";
+      const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
+      toggle?.setAttribute(
+        "aria-label",
+        `Theme: ${theme}. Select ${nextTheme} theme`,
+      );
+    }
+
+    const storedTheme = localStorage.getItem("theme");
+    const initialTheme: Theme = themes.includes(storedTheme as Theme)
+      ? (storedTheme as Theme)
+      : "system";
+    applyTheme(initialTheme);
+    toggle?.addEventListener("click", () => {
+      const current = localStorage.getItem("theme") as Theme;
+      applyTheme(themes[(themes.indexOf(current) + 1) % themes.length]);
+    });
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const revealItems = document.querySelectorAll<HTMLElement>(".reveal");
+    if (reducedMotion) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.16 },
+      );
+      revealItems.forEach((item) => revealObserver.observe(item));
+    }
+
+    const sections = document.querySelectorAll<HTMLElement>("[data-section]");
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>("nav a");
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach((link) =>
+            link.classList.toggle(
+              "is-active",
+              link.hash === `#${entry.target.id}`,
+            ),
+          );
+        });
+      },
+      { rootMargin: "-42% 0px -48%", threshold: 0 },
+    );
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    const portrait = document.querySelector<HTMLImageElement>(
+      ".character-portrait",
+    );
+    const portraitFrame =
+      document.querySelector<HTMLElement>(".portrait-frame");
+    const characterCaption =
+      document.querySelector<HTMLElement>(".character-caption");
+    const traits = document.querySelectorAll<HTMLButtonElement>(".trait");
+
+    function selectTrait(selected: HTMLButtonElement) {
+      if (
+        !portrait ||
+        !portraitFrame ||
+        !characterCaption ||
+        selected.classList.contains("is-active")
+      )
+        return;
+      traits.forEach((trait) => {
+        const active = trait === selected;
+        trait.classList.toggle("is-active", active);
+        trait.setAttribute("aria-pressed", String(active));
+      });
+
+      const swapPortrait = () => {
+        portrait.src = selected.dataset.image || portrait.src;
+        portrait.alt = selected.dataset.alt || portrait.alt;
+        portraitFrame.dataset.image = selected.dataset.image || portrait.src;
+        portraitFrame.dataset.alt = selected.dataset.alt || portrait.alt;
+        characterCaption.textContent = selected.dataset.caption || "";
+        requestAnimationFrame(() =>
+          portraitFrame.classList.remove("is-changing"),
+        );
+      };
+
+      if (reducedMotion) {
+        swapPortrait();
+      } else {
+        portraitFrame.classList.add("is-changing");
+        window.setTimeout(swapPortrait, 180);
+      }
+    }
+
+    traits.forEach((trait) =>
+      trait.addEventListener("click", () => selectTrait(trait)),
+    );
+
+    if (!reducedMotion) {
+      const motion = gsap.matchMedia();
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: "#opening",
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        })
+        .to(".hero-copy", { yPercent: -18, opacity: 0.24, ease: "none" }, 0)
+        .to(
+          ".hero-image-wrap",
+          { yPercent: 12, scale: 0.9, rotation: 3, ease: "none" },
+          0,
+        )
+        .to(".visual-sticker", { y: -42, rotation: 26, ease: "none" }, 0);
+
+      gsap.fromTo(
+        ".interlude",
+        {
+          clipPath: "inset(12% 5% round 2rem)",
+        },
+        {
+          clipPath: "inset(0% 0% round 0rem)",
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".interlude",
+            start: "top bottom",
+            end: "top top",
+            scrub: 0.8,
+          },
+        },
+      );
+
+      gsap.fromTo(
+        ".interlude blockquote",
+        {
+          scale: 0.88,
+          rotation: 2,
+        },
+        {
+          scale: 1,
+          rotation: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".interlude",
+            start: "top 82%",
+            end: "center center",
+            scrub: 0.8,
+          },
+        },
+      );
+
+      traits.forEach((trait) => {
+        ScrollTrigger.create({
+          trigger: trait,
+          start: "top 62%",
+          end: "bottom 38%",
+          onEnter: () => selectTrait(trait),
+          onEnterBack: () => selectTrait(trait),
+        });
+      });
+
+      motion.add("(min-width: 901px)", () => {
+        const encounterTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#encounter",
+            start: "top top",
+            end: "+=110%",
+            pin: true,
+            scrub: 0.8,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        encounterTimeline
+          .fromTo(
+            ".encounter-image .media-button",
+            {
+              clipPath: "inset(14% 9% round 1.5rem)",
+              scale: 0.88,
+            },
+            {
+              clipPath: "inset(0% 0% round 0.75rem)",
+              scale: 1,
+              ease: "power2.inOut",
+              duration: 1,
+            },
+            0,
+          )
+          .fromTo(
+            ".encounter-copy > *",
+            {
+              opacity: 0,
+              x: 56,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              stagger: 0.1,
+              ease: "power3.out",
+              duration: 0.65,
+            },
+            0.18,
+          )
+          .to(
+            ".encounter-image img",
+            {
+              scale: 1.08,
+              ease: "none",
+              duration: 1,
+            },
+            0,
+          );
+
+        const gallery = document.querySelector<HTMLElement>(".gallery");
+        const moments = document.querySelector<HTMLElement>("#moments");
+        if (gallery && moments) {
+          const galleryTravel = () =>
+            Math.max(0, gallery.scrollWidth - moments.clientWidth + 64);
+          gsap.to(gallery, {
+            x: () => -galleryTravel(),
+            ease: "none",
+            scrollTrigger: {
+              trigger: moments,
+              start: "top top",
+              end: () =>
+                `+=${Math.max(window.innerHeight, galleryTravel() * 1.8)}`,
+              pin: true,
+              scrub: 0.8,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+      });
+
+      motion.add("(max-width: 900px)", () => {
+        gsap.utils
+          .toArray<HTMLElement>(
+            ".encounter-image, .portrait-card, .interlude-media, .finale-art",
+          )
+          .forEach((element, index) => {
+            gsap.fromTo(
+              element,
+              {
+                y: index % 2 === 0 ? 18 : -12,
+              },
+              {
+                y: index % 2 === 0 ? -18 : 12,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: element,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: 0.8,
+                },
+              },
+            );
+          });
+      });
+
+      gsap.fromTo(
+        ".finale-art img",
+        {
+          yPercent: -7,
+          scale: 1.08,
+        },
+        {
+          yPercent: 7,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".finale",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        },
+      );
+
+      window.addEventListener("load", () => ScrollTrigger.refresh(), {
+        once: true,
+      });
+    }
+
+    const dialog = document.querySelector<HTMLDialogElement>(".lightbox");
+    const dialogImage = dialog?.querySelector<HTMLImageElement>("img");
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-lightbox]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          if (!dialog || !dialogImage) return;
+          dialogImage.src = button.dataset.image || "";
+          dialogImage.alt = button.dataset.alt || "";
+          dialog.showModal();
+        });
+      });
+    dialog
+      ?.querySelector(".lightbox-close")
+      ?.addEventListener("click", () => dialog.close());
+    dialog?.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  </script>
 </Layout>
