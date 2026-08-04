@@ -8,11 +8,15 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-
+  output: "static",
+  devToolbar: {
+    enabled: false,
+  },
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()],
   },
   server: {
-    port: 3001,
+    port: 3000,
   },
 });
