@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mbakmegumi.ekel.dev/sitemap.xml

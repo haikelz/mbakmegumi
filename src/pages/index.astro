@@ -6,21 +6,29 @@ const gallery = [
     src: "/assets/katou-3.jpg",
     alt: "Megumi Kato sitting in front of a laptop",
     caption: "Quietly present in the process",
+    width: 736,
+    height: 704,
   },
   {
     src: "/assets/katou-5.jpg",
     alt: "Megumi Kato reading a book",
     caption: "Humor when you least expect it",
+    width: 736,
+    height: 920,
   },
   {
     src: "/assets/katou-6.jpg",
     alt: "Megumi Kato wearing an apron",
     caption: "Warmth in ordinary moments",
+    width: 736,
+    height: 633,
   },
   {
     src: "/assets/katou-7.jpg",
     alt: "Megumi Kato standing on a city street",
     caption: "An ordinary encounter that changes everything",
+    width: 736,
+    height: 414,
   },
 ];
 ---
@@ -274,7 +282,13 @@ const gallery = [
               aria-label={`Enlarge: ${item.caption}`}
             >
               <span class="gallery-image">
-                <img src={item.src} alt={item.alt} loading="lazy" />
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  width={item.width}
+                  height={item.height}
+                />
               </span>
               <span class="gallery-caption">{item.caption}</span>
             </button>
@@ -295,8 +309,8 @@ const gallery = [
         <img
           src="/assets/saenai_heroine_no_sodatekata_114.jpg"
           alt="A vertical sketch illustration of Megumi Kato"
-          width="1398"
-          height="2592"
+          width="377"
+          height="700"
           loading="lazy"
         />
       </button>

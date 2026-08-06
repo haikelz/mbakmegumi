@@ -189,6 +189,13 @@ figcaption { text-wrap: pretty; }
   letter-spacing: 0;
 }
 
+.wordmark-logo {
+  display: block;
+  height: 1.75rem;
+  width: auto;
+  border-radius: 6px;
+}
+
 .site-header nav {
   display: flex;
   gap: 2rem;
